@@ -1,5 +1,7 @@
-package Android_APIDemos_Application;
+package Android_Practice;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import static org.testng.Assert.assertEquals;
 
 import java.net.MalformedURLException;
@@ -11,7 +13,7 @@ import org.testng.annotations.Test;
 
 import io.appium.java_client.AppiumBy;
 
-public class swipeGesture extends InstallApp {
+public class swipeGesture extends InstallApp_Android {
 	@Test
 	public static void swipe() throws MalformedURLException, URISyntaxException, InterruptedException {
 		
@@ -23,13 +25,13 @@ public class swipeGesture extends InstallApp {
 		WebElement firstImage = driver.findElement(By.xpath("//android.widget.ImageView[1]"));
 		
 		String s1=driver.findElement(By.xpath("//android.widget.ImageView[1]")).getDomAttribute("focusable");
-		assertEquals(s1,true); 
+		AssertJUnit.assertEquals(s1,true); 
 		Thread.sleep(2000);
 		
 		String swipeDirection="left";
 		swipeleft(swipeDirection,firstImage);
 		String s2 = driver.findElement(By.xpath("//android.widget.ImageView[1]")).getDomAttribute("focusable");
-		assertEquals(s2,false);
+		AssertJUnit.assertEquals(s2,false);
 	}
 
 }

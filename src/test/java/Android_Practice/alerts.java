@@ -1,5 +1,7 @@
-package Android_APIDemos_Application;
+package Android_Practice;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import org.openqa.selenium.By;
@@ -9,15 +11,15 @@ import org.testng.annotations.Test;
 
 import io.appium.java_client.AppiumBy;
 
-public class alerts extends InstallApp{
-
+public class alerts extends InstallApp_Android{
+//a
 	@Test(priority = 1)
 	public static void all() throws MalformedURLException, URISyntaxException, InterruptedException{
 		
 		InstallApplication();
 		driver.findElement(AppiumBy.accessibilityId("App")).click();
 		driver.findElement(AppiumBy.accessibilityId("Alert Dialogs")).click();
-		Assert.assertEquals(driver.findElement(By.xpath("//android.widget.TextView[@text='App/Alert Dialogs']")).getText(), "App/Alert Dialogs");
+		AssertJUnit.assertEquals(driver.findElement(By.xpath("//android.widget.TextView[@text='App/Alert Dialogs']")).getText(), "App/Alert Dialogs");
 	}
 	
 	@Test(priority = 2)
@@ -65,7 +67,7 @@ public class alerts extends InstallApp{
 		//System.out.println("Final Pop Text is="+FinalText);
 			
 			//checking both first & second text's are same or not
-			Assert.assertEquals(FinalText,text);
+			AssertJUnit.assertEquals(FinalText,text);
 			driver.navigate().back();
 			System.out.println("Test Case-4");
 		}
@@ -85,12 +87,12 @@ public class alerts extends InstallApp{
 		//Option6
 		driver.findElement(AppiumBy.accessibilityId("Single choice list")).click();
 		String s= driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Map']")).getDomAttribute("checked");
-		Assert.assertEquals(s,true);
+		AssertJUnit.assertEquals(s,true);
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Satellite']")).click();
 		String p = driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Satellite']")).getDomAttribute("checked");
-		Assert.assertEquals(p,true);
+		AssertJUnit.assertEquals(p,true);
 		String q = driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Map']")).getDomAttribute("checked");
-		Assert.assertEquals(q,true);
+		AssertJUnit.assertEquals(q,true);
 		driver.findElement(AppiumBy.id("android:id/button1")).click();
 		System.out.println("Test Case-6");
 	}
@@ -101,26 +103,26 @@ public class alerts extends InstallApp{
 
 		driver.findElement(AppiumBy.accessibilityId("Repeat alarm")).click();
 		String x = driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Every Monday']")).getDomAttribute("checked");
-		Assert.assertEquals(x,false);
+		AssertJUnit.assertEquals(x,false);
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Every Monday']")).click();
 		
 		String x1 = driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Every Monday']")).getDomAttribute("checked");
-		Assert.assertEquals(x1,true);
+		AssertJUnit.assertEquals(x1,true);
 		
 		String x2 = driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Every Tuesday']")).getDomAttribute("checked");
-		Assert.assertEquals(x2,true);
+		AssertJUnit.assertEquals(x2,true);
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Every Tuesday']")).click();
 		
 		String x3 =driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Every Tuesday']")).getDomAttribute("checked");
-		Assert.assertEquals(x3,false);
+		AssertJUnit.assertEquals(x3,false);
 		
 		driver.findElement(By.xpath("//android.widget.Button[@text='OK']")).click();
 		driver.findElement(AppiumBy.accessibilityId("Repeat alarm")).click();
 		String d1= driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Every Monday']")).getDomAttribute("checked");
-		Assert.assertEquals(d1,true);
+		AssertJUnit.assertEquals(d1,true);
 		
 		String d2=driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Every Tuesday']")).getDomAttribute("checked");
-		Assert.assertEquals(d2,false);
+		AssertJUnit.assertEquals(d2,false);
 		
 		driver.findElement(By.xpath("//android.widget.Button[@text='OK']")).click();
 		System.out.println("Test Case-7");

@@ -1,14 +1,14 @@
-package Android_APIDemos_Application;
+package Android_Practice;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import org.openqa.selenium.By;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 //General Store E-Commerse Application
 
-public class eCommerse_tc_1 extends InstallApp{
+public class eCommerse_tc_1 extends InstallApp_Android{
 	@Test
 	public static void FillForm() throws MalformedURLException, URISyntaxException, InterruptedException {
 		
@@ -21,7 +21,7 @@ public class eCommerse_tc_1 extends InstallApp{
 		driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
 		
 		String toastmessage= driver.findElement(By.xpath("//android.widget.Toast[1]")).getDomAttribute("name");
-		Assert.assertEquals(toastmessage,"Please enter your name");
+		AssertJUnit.assertEquals(toastmessage,"Please enter your name");
 		
 		driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Sai Kiran Rao");
 		

@@ -1,5 +1,6 @@
-package Android_APIDemos_Application;
+package Android_Practice;
 
+import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
@@ -10,7 +11,7 @@ import org.testng.annotations.Test;
 
 import io.appium.java_client.AppiumBy;
 
-public class rotateScreen extends InstallApp{
+public class rotateScreen extends InstallApp_Android{
 
 	@Test
 	public static void landscapemode() throws MalformedURLException, URISyntaxException {

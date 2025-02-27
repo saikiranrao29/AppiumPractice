@@ -1,6 +1,8 @@
-package Android_APIDemos_Application; 
+package Android_Practice; 
 
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -14,7 +16,7 @@ import org.testng.annotations.Test;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 
-public class eCommerse_tc_3 extends InstallApp{
+public class eCommerse_tc_3 extends InstallApp_Android{
 	@Test
 	public static void productPrice() throws InterruptedException {
 		
@@ -38,8 +40,8 @@ public class eCommerse_tc_3 extends InstallApp{
 		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.attributeContains(driver.findElement(By.id("com.androidsample.generalstore:id/toolbar_title")), "text", "Cart"));
 		
-		Assert.assertEquals(Price1, driver.findElements(By.id("com.androidsample.generalstore:id/productPrice")).get(0).getText());
-		Assert.assertEquals(Price2, driver.findElements(By.id("com.androidsample.generalstore:id/productPrice")).get(1).getText());
+		AssertJUnit.assertEquals(Price1, driver.findElements(By.id("com.androidsample.generalstore:id/productPrice")).get(0).getText());
+		AssertJUnit.assertEquals(Price2, driver.findElements(By.id("com.androidsample.generalstore:id/productPrice")).get(1).getText());
 		
 		int productSize = driver.findElements(By.id("com.androidsample.generalstore:id/productPrice")).size();
 		System.out.println(productSize);
@@ -58,7 +60,7 @@ public class eCommerse_tc_3 extends InstallApp{
 		
 		String Cart= driver.findElement(By.id("com.androidsample.generalstore:id/totalAmountLbl")).getText().substring(1).trim();
 		Double FinalCart= Double.parseDouble(Cart);
-		Assert.assertEquals(FinalCart, FinalAmount);
+		AssertJUnit.assertEquals(FinalCart, FinalAmount);
 		
 		WebElement element =driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
 		longpressaction(element);

@@ -1,5 +1,7 @@
 package Streams_AndroidApp;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -23,8 +25,8 @@ public class AppGestures extends Base1{
 		l.longPress(elementtolongpress);
 
 		String count=driver.findElement(By.id("com.panterra.mobile.streams:id/action_bar_title")).getText().trim();
-		Assert.assertEquals(count,"1");
-		Assert.assertTrue((driver.findElement(By.id("com.panterra.mobile.streams:id/chkBox"))).isDisplayed());
+		AssertJUnit.assertEquals(count,"1");
+		AssertJUnit.assertTrue((driver.findElement(By.id("com.panterra.mobile.streams:id/chkBox"))).isDisplayed());
 		driver.findElement(By.id("com.panterra.mobile.streams:id/recent_temp_group")).isDisplayed();
 		Thread.sleep(2000);
 		

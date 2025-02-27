@@ -1,5 +1,6 @@
-package Android_APIDemos_Application;
+package Android_Practice;
 
+import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
@@ -10,7 +11,7 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 
-public class keyEvents extends InstallApp{
+public class keyEvents extends InstallApp_Android{
 @Test
 	public static void pressKeys() throws MalformedURLException, URISyntaxException {
 		

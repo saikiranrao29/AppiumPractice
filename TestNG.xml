@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Android_Practice.eCommerse_tc_1">
+      <class name="iOS_Practice.iOSAppGestures">
         <methods>
-          <include name="InstallApplication"/>
-          <include name="FillForm"/>
+          <include name="iOSSlide"/>
         </methods>
-      </class> <!-- Android_Practice.eCommerse_tc_1 -->
+      </class> <!-- iOS_Practice.iOSAppGestures -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

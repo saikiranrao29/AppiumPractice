@@ -1,18 +1,20 @@
-package Android_APIDemos_Application;
+package Android_Practice;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import org.testng.annotations.Test;
 import io.appium.java_client.android.nativekey.AndroidKey;
 
-public class appLockAndUnlock extends InstallApp {
+public class appLockAndUnlock extends InstallApp_Android {
 
 	@Test
 	public static void lock() throws InterruptedException {
 		
 		
 		driver.lockDevice();
-		assertTrue(driver.isDeviceLocked());
+		AssertJUnit.assertTrue(driver.isDeviceLocked());
 		Thread.sleep(2000);
 		
 		if (driver.isDeviceLocked() == true)
@@ -26,7 +28,7 @@ public class appLockAndUnlock extends InstallApp {
 		}
 
 		driver.unlockDevice();
-		assertFalse(driver.isDeviceLocked());
+		AssertJUnit.assertFalse(driver.isDeviceLocked());
 		Thread.sleep(2000);
 		if (driver.isDeviceLocked() == false)
 		{

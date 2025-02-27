@@ -1,5 +1,7 @@
-package Android_APIDemos_Application;
+package Android_Practice;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -11,6 +13,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
@@ -19,42 +22,79 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 
-public class InstallApp {
+public class InstallApp_Android {
 	
 	public static AndroidDriver driver;
+	
 //<<<<------------------------------------------------------------------------------------------------------>>>
+	
 	@BeforeClass
+	@Test
 	public static void InstallApplication() throws MalformedURLException, URISyntaxException {
 		
+		String runningSystem="Mac";
+		//String runningSystem="Windows";
+		
+		if (runningSystem=="Mac")
+		{	
+			
 		//Start the Appium Service (APIPOB)
-		AppiumDriverLocalService Service= new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\Saikiran\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js")).withIPAddress("127.0.0.1").usingPort(4732).build();
+		AppiumDriverLocalService Service= new AppiumServiceBuilder().withAppiumJS(new File("//usr//local//lib//node_modules//appium//build//lib//main.js")).withIPAddress("127.0.0.1").usingPort(4732).build();
 		Service.isRunning();
 		//Service.start();
 		//Assert.assertEquals(Service.isRunning(),true);
+		}
+		else if (runningSystem == "Windows")
+		{	
+			//Start the Appium Service (APIPOB)
+			AppiumDriverLocalService Service= new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\Saikiran\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js")).withIPAddress("127.0.0.1").usingPort(4732).build();
+			Service.isRunning();
+			//Service.start();
+			//Assert.assertEquals(Service.isRunning(),true);	
+		}
 								
 		UiAutomator2Options options= new UiAutomator2Options();
-		options.setDeviceName("Pixel7Pro");
-		//options.setApp("C:\\Users\\Saikiran\\eclipse-workspace\\Streams\\src\\test\\java\\resourses\\ApiDemos_debug.apk");
-		//options.setApp("C:\\Users\\Saikiran\\eclipse-workspace\\Streams\\src\\test\\java\\resourses\\Streams_Android_Production.apk");
-		options.setApp("C:\\Users\\Saikiran\\eclipse-workspace\\Streams\\src\\test\\java\\resourses\\General_Store.apk");
-		options.setChromedriverExecutable("D:\\chromedriver-win64\\chromedriver.exe");
-		//optins.setAppPackage("com.panterra.mobile.streams");
-		//options.setAppActivity("com.panterra.mobile.streams.MainActivity");
+		options.setDeviceName("Pixel9Pro");
+		
+		if (runningSystem == "Mac")
+		{
+			//options.setApp("//Users//saikiran_rao//git//AppiumPractice//src//test//java//resourses//ApiDemos_debug.apk");
+			options.setApp("//Users//saikiran_rao//git//AppiumPractice//src//test//java//resourses//Streams_Android_Production.apk");
+			//options.setApp("//Users//saikiran_rao//git//AppiumPractice//src//test//java//resourses//General_Store.apk");
+			//options.setChromedriverExecutable("D:\\chromedriver-win64\\chromedriver.exe");
+			options.setAppPackage("com.panterra.mobile.streams");
+			options.setAppActivity("com.panterra.mobile.streams.MainActivity");
+			options.setAutoGrantPermissions(true);
+		}
+		
+		else if (runningSystem == "Windows")
+		{
+			//options.setApp("C:\\Users\\Saikiran\\eclipse-workspace\\Streams\\src\\test\\java\\resourses\\ApiDemos_debug.apk");
+			//options.setApp("C:\\Users\\Saikiran\\eclipse-workspace\\Streams\\src\\test\\java\\resourses\\Streams_Android_Production.apk");
+			options.setApp("C:\\Users\\Saikiran\\eclipse-workspace\\Streams\\src\\test\\java\\resourses\\General_Store.apk");
+			options.setChromedriverExecutable("D:\\chromedriver-win64\\chromedriver.exe");
+			//optins.setAppPackage("com.panterra.mobile.streams");
+			//options.setAppActivity("com.panterra.mobile.streams.MainActivity");
+			options.setAutoGrantPermissions(true);
+		}
+		
+
 		
 		//Set Android Driver to Install the Application (URL,Capabilities)
 		driver =new AndroidDriver(new URI("http://127.0.0.1:4723/").toURL(),options);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		
 		//String appPackage = "com.androidsample.generalstore"; //General Store AppPackage
-		//String appPackage = "com.panterra.mobile.streams"; //Streams App AppPackage
+		String appPackage = "com.panterra.mobile.streams"; //Streams App AppPackage
 		//String appPackage = ""
 		
-//		//Checking is App Installed or not
-//		if (driver.isAppInstalled(appPackage)) {
-//		    System.out.println("App is installed on the device.");
-//		} else {
-//		    System.out.println("App is not installed on the device.");
-//		}
+	//Checking is App Installed or not
+		if (driver.isAppInstalled(appPackage)) {
+	    System.out.println("App is installed on the device.");
+		} else {
+		    System.out.println("App is not installed on the device.");
+	   }
+
 	}
 
 	
@@ -121,6 +161,13 @@ public class InstallApp {
 				"endX", dropX,
 			    "endY", dropY));
 	}
+	
+	@Test
+	public static void main(String[] args) {
+		System.out.println("Testing Printing");
+	}
 }
+
+
 	
 

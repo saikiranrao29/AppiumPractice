@@ -1,10 +1,11 @@
-package Android_APIDemos_Application;
+package Android_Practice;
 
+import org.testng.annotations.Test;
 import org.testng.annotations.Test;
 
 import com.google.common.collect.ImmutableMap;
 
-public class openAnyAppScreen extends InstallApp{
+public class openAnyAppScreen extends InstallApp_Android{
 	@Test
 	public static void openScreen(String appPackage,String appActivity) {		
 		driver.executeScript("mobile: startActivity", ImmutableMap.of("appPackage", appPackage, 

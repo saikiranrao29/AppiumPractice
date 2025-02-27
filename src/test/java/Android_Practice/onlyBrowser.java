@@ -1,5 +1,6 @@
-package Android_APIDemos_Application;
+package Android_Practice;
 
+import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
